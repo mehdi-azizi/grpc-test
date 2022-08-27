@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option objc_class_prefix = "MA";
+
+package grpcTest;
+
+// The greeting service definition.
+service GrpcTestService {
+  // Sends a greeting
+  rpc receiveData (pkg) returns (pkg1) {}
+}
+
+// The request message containing the user's name.
+message pkg {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message pkg1 {
+  string message = 1;
+}
