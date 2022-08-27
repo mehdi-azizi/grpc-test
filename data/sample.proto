@@ -4,18 +4,18 @@ option objc_class_prefix = "MA";
 
 package grpcTest;
 
-// The greeting service definition.
+// The test service definition.
 service GrpcTestService {
-  // Sends a greeting
-  rpc receiveData (pkg) returns (pkg1) {}
+  // Sends a data
+  rpc getData (request) returns (respond) {}
 }
 
 // The request message containing the user's name.
-message pkg {
+message request {
   string name = 1;
 }
 
 // The response message containing the greetings
-message pkg1 {
+message respond {
   string message = 1;
 }

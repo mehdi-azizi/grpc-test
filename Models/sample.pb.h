@@ -54,39 +54,39 @@ struct TableStruct_sample_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_sample_2eproto;
 namespace grpcTest {
-class pkg;
-struct pkgDefaultTypeInternal;
-extern pkgDefaultTypeInternal _pkg_default_instance_;
-class pkg1;
-struct pkg1DefaultTypeInternal;
-extern pkg1DefaultTypeInternal _pkg1_default_instance_;
+class request;
+struct requestDefaultTypeInternal;
+extern requestDefaultTypeInternal _request_default_instance_;
+class respond;
+struct respondDefaultTypeInternal;
+extern respondDefaultTypeInternal _respond_default_instance_;
 }  // namespace grpcTest
 PROTOBUF_NAMESPACE_OPEN
-template<> ::grpcTest::pkg* Arena::CreateMaybeMessage<::grpcTest::pkg>(Arena*);
-template<> ::grpcTest::pkg1* Arena::CreateMaybeMessage<::grpcTest::pkg1>(Arena*);
+template<> ::grpcTest::request* Arena::CreateMaybeMessage<::grpcTest::request>(Arena*);
+template<> ::grpcTest::respond* Arena::CreateMaybeMessage<::grpcTest::respond>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace grpcTest {
 
 // ===================================================================
 
-class pkg final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:grpcTest.pkg) */ {
+class request final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:grpcTest.request) */ {
  public:
-  inline pkg() : pkg(nullptr) {}
-  ~pkg() override;
-  explicit constexpr pkg(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline request() : request(nullptr) {}
+  ~request() override;
+  explicit constexpr request(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  pkg(const pkg& from);
-  pkg(pkg&& from) noexcept
-    : pkg() {
+  request(const request& from);
+  request(request&& from) noexcept
+    : request() {
     *this = ::std::move(from);
   }
 
-  inline pkg& operator=(const pkg& from) {
+  inline request& operator=(const request& from) {
     CopyFrom(from);
     return *this;
   }
-  inline pkg& operator=(pkg&& from) noexcept {
+  inline request& operator=(request&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -109,20 +109,20 @@ class pkg final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const pkg& default_instance() {
+  static const request& default_instance() {
     return *internal_default_instance();
   }
-  static inline const pkg* internal_default_instance() {
-    return reinterpret_cast<const pkg*>(
-               &_pkg_default_instance_);
+  static inline const request* internal_default_instance() {
+    return reinterpret_cast<const request*>(
+               &_request_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  friend void swap(pkg& a, pkg& b) {
+  friend void swap(request& a, request& b) {
     a.Swap(&b);
   }
-  inline void Swap(pkg* other) {
+  inline void Swap(request* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -135,7 +135,7 @@ class pkg final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(pkg* other) {
+  void UnsafeArenaSwap(request* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -143,13 +143,13 @@ class pkg final :
 
   // implements Message ----------------------------------------------
 
-  pkg* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<pkg>(arena);
+  request* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<request>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const pkg& from);
+  void CopyFrom(const request& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const pkg& from);
+  void MergeFrom(const request& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -166,15 +166,15 @@ class pkg final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(pkg* other);
+  void InternalSwap(request* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "grpcTest.pkg";
+    return "grpcTest.request";
   }
   protected:
-  explicit pkg(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit request(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -207,7 +207,7 @@ class pkg final :
   std::string* _internal_mutable_name();
   public:
 
-  // @@protoc_insertion_point(class_scope:grpcTest.pkg)
+  // @@protoc_insertion_point(class_scope:grpcTest.request)
  private:
   class _Internal;
 
@@ -220,24 +220,24 @@ class pkg final :
 };
 // -------------------------------------------------------------------
 
-class pkg1 final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:grpcTest.pkg1) */ {
+class respond final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:grpcTest.respond) */ {
  public:
-  inline pkg1() : pkg1(nullptr) {}
-  ~pkg1() override;
-  explicit constexpr pkg1(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline respond() : respond(nullptr) {}
+  ~respond() override;
+  explicit constexpr respond(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  pkg1(const pkg1& from);
-  pkg1(pkg1&& from) noexcept
-    : pkg1() {
+  respond(const respond& from);
+  respond(respond&& from) noexcept
+    : respond() {
     *this = ::std::move(from);
   }
 
-  inline pkg1& operator=(const pkg1& from) {
+  inline respond& operator=(const respond& from) {
     CopyFrom(from);
     return *this;
   }
-  inline pkg1& operator=(pkg1&& from) noexcept {
+  inline respond& operator=(respond&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -260,20 +260,20 @@ class pkg1 final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const pkg1& default_instance() {
+  static const respond& default_instance() {
     return *internal_default_instance();
   }
-  static inline const pkg1* internal_default_instance() {
-    return reinterpret_cast<const pkg1*>(
-               &_pkg1_default_instance_);
+  static inline const respond* internal_default_instance() {
+    return reinterpret_cast<const respond*>(
+               &_respond_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     1;
 
-  friend void swap(pkg1& a, pkg1& b) {
+  friend void swap(respond& a, respond& b) {
     a.Swap(&b);
   }
-  inline void Swap(pkg1* other) {
+  inline void Swap(respond* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -286,7 +286,7 @@ class pkg1 final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(pkg1* other) {
+  void UnsafeArenaSwap(respond* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -294,13 +294,13 @@ class pkg1 final :
 
   // implements Message ----------------------------------------------
 
-  pkg1* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<pkg1>(arena);
+  respond* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<respond>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const pkg1& from);
+  void CopyFrom(const respond& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom(const pkg1& from);
+  void MergeFrom(const respond& from);
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
   public:
@@ -317,15 +317,15 @@ class pkg1 final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(pkg1* other);
+  void InternalSwap(respond* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "grpcTest.pkg1";
+    return "grpcTest.respond";
   }
   protected:
-  explicit pkg1(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit respond(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   private:
   static void ArenaDtor(void* object);
@@ -358,7 +358,7 @@ class pkg1 final :
   std::string* _internal_mutable_message();
   public:
 
-  // @@protoc_insertion_point(class_scope:grpcTest.pkg1)
+  // @@protoc_insertion_point(class_scope:grpcTest.respond)
  private:
   class _Internal;
 
@@ -378,44 +378,44 @@ class pkg1 final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// pkg
+// request
 
 // string name = 1;
-inline void pkg::clear_name() {
+inline void request::clear_name() {
   name_.ClearToEmpty();
 }
-inline const std::string& pkg::name() const {
-  // @@protoc_insertion_point(field_get:grpcTest.pkg.name)
+inline const std::string& request::name() const {
+  // @@protoc_insertion_point(field_get:grpcTest.request.name)
   return _internal_name();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void pkg::set_name(ArgT0&& arg0, ArgT... args) {
+void request::set_name(ArgT0&& arg0, ArgT... args) {
  
  name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:grpcTest.pkg.name)
+  // @@protoc_insertion_point(field_set:grpcTest.request.name)
 }
-inline std::string* pkg::mutable_name() {
+inline std::string* request::mutable_name() {
   std::string* _s = _internal_mutable_name();
-  // @@protoc_insertion_point(field_mutable:grpcTest.pkg.name)
+  // @@protoc_insertion_point(field_mutable:grpcTest.request.name)
   return _s;
 }
-inline const std::string& pkg::_internal_name() const {
+inline const std::string& request::_internal_name() const {
   return name_.Get();
 }
-inline void pkg::_internal_set_name(const std::string& value) {
+inline void request::_internal_set_name(const std::string& value) {
   
   name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* pkg::_internal_mutable_name() {
+inline std::string* request::_internal_mutable_name() {
   
   return name_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* pkg::release_name() {
-  // @@protoc_insertion_point(field_release:grpcTest.pkg.name)
+inline std::string* request::release_name() {
+  // @@protoc_insertion_point(field_release:grpcTest.request.name)
   return name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void pkg::set_allocated_name(std::string* name) {
+inline void request::set_allocated_name(std::string* name) {
   if (name != nullptr) {
     
   } else {
@@ -428,49 +428,49 @@ inline void pkg::set_allocated_name(std::string* name) {
     name_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:grpcTest.pkg.name)
+  // @@protoc_insertion_point(field_set_allocated:grpcTest.request.name)
 }
 
 // -------------------------------------------------------------------
 
-// pkg1
+// respond
 
 // string message = 1;
-inline void pkg1::clear_message() {
+inline void respond::clear_message() {
   message_.ClearToEmpty();
 }
-inline const std::string& pkg1::message() const {
-  // @@protoc_insertion_point(field_get:grpcTest.pkg1.message)
+inline const std::string& respond::message() const {
+  // @@protoc_insertion_point(field_get:grpcTest.respond.message)
   return _internal_message();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void pkg1::set_message(ArgT0&& arg0, ArgT... args) {
+void respond::set_message(ArgT0&& arg0, ArgT... args) {
  
  message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:grpcTest.pkg1.message)
+  // @@protoc_insertion_point(field_set:grpcTest.respond.message)
 }
-inline std::string* pkg1::mutable_message() {
+inline std::string* respond::mutable_message() {
   std::string* _s = _internal_mutable_message();
-  // @@protoc_insertion_point(field_mutable:grpcTest.pkg1.message)
+  // @@protoc_insertion_point(field_mutable:grpcTest.respond.message)
   return _s;
 }
-inline const std::string& pkg1::_internal_message() const {
+inline const std::string& respond::_internal_message() const {
   return message_.Get();
 }
-inline void pkg1::_internal_set_message(const std::string& value) {
+inline void respond::_internal_set_message(const std::string& value) {
   
   message_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
 }
-inline std::string* pkg1::_internal_mutable_message() {
+inline std::string* respond::_internal_mutable_message() {
   
   return message_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
 }
-inline std::string* pkg1::release_message() {
-  // @@protoc_insertion_point(field_release:grpcTest.pkg1.message)
+inline std::string* respond::release_message() {
+  // @@protoc_insertion_point(field_release:grpcTest.respond.message)
   return message_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
 }
-inline void pkg1::set_allocated_message(std::string* message) {
+inline void respond::set_allocated_message(std::string* message) {
   if (message != nullptr) {
     
   } else {
@@ -483,7 +483,7 @@ inline void pkg1::set_allocated_message(std::string* message) {
     message_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), "", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:grpcTest.pkg1.message)
+  // @@protoc_insertion_point(field_set_allocated:grpcTest.respond.message)
 }
 
 #ifdef __GNUC__

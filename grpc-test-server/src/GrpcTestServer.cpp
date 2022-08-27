@@ -15,6 +15,19 @@ GrpcTestServer::~GrpcTestServer()
   stop();
 }
 
+void  GrpcTestServer::readData()
+{
+  _service->RequestgetData(&_context, &_requestPkg,
+                           &_responder, _queue.get(), _queue.get(), nullptr);
+  void *tag;  // uniquely identifies a request.
+  bool  ok;
+  _queue->Next(&tag, &ok);
+  std::string  prefix("Hello ");
+  _respondPkg.set_message(prefix + _requestPkg.name());
+
+  _responder.Finish(_respondPkg, Status::OK, this);
+}
+
 void  GrpcTestServer::start(const std::string &ip, int port)
 {
   const auto &addr = ip + ":" + std::to_string(port);
@@ -23,7 +36,7 @@ void  GrpcTestServer::start(const std::string &ip, int port)
     ServerBuilder  builder;
     int           *selected = nullptr;
 
-    builder.AddListeningPort("0.0.0.0:50051", grpc::InsecureServerCredentials(), selected);
+    builder.AddListeningPort(addr, grpc::InsecureServerCredentials(), selected);
     _service = new grpcTest::GrpcTestService::AsyncService();
 
     builder.RegisterService(_service);
@@ -36,11 +49,9 @@ void  GrpcTestServer::start(const std::string &ip, int port)
       std::cout << "Server listening on " << addr << std::endl;
     }
 
-    _service->RequestreceiveData(&_context, &_requestPkg,
-                                 &_responder, _queue.get(), _queue.get(), nullptr);
-    void *tag;  // uniquely identifies a request.
-    bool  ok;
-    _queue->Next(&tag, &ok);
+    /// it should move to thread
+    readData();
+
     std::cout << "Server listening on " << addr << std::endl;
   }
 }

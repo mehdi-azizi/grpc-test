@@ -22,7 +22,7 @@
 namespace grpcTest {
 
 static const char* GrpcTestService_method_names[] = {
-  "/grpcTest.GrpcTestService/receiveData",
+  "/grpcTest.GrpcTestService/getData",
 };
 
 std::unique_ptr< GrpcTestService::Stub> GrpcTestService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -32,28 +32,28 @@ std::unique_ptr< GrpcTestService::Stub> GrpcTestService::NewStub(const std::shar
 }
 
 GrpcTestService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_receiveData_(GrpcTestService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  : channel_(channel), rpcmethod_getData_(GrpcTestService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::Status GrpcTestService::Stub::receiveData(::grpc::ClientContext* context, const ::grpcTest::pkg& request, ::grpcTest::pkg1* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::grpcTest::pkg, ::grpcTest::pkg1, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_receiveData_, context, request, response);
+::grpc::Status GrpcTestService::Stub::getData(::grpc::ClientContext* context, const ::grpcTest::request& request, ::grpcTest::respond* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::grpcTest::request, ::grpcTest::respond, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_getData_, context, request, response);
 }
 
-void GrpcTestService::Stub::async::receiveData(::grpc::ClientContext* context, const ::grpcTest::pkg* request, ::grpcTest::pkg1* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::grpcTest::pkg, ::grpcTest::pkg1, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_receiveData_, context, request, response, std::move(f));
+void GrpcTestService::Stub::async::getData(::grpc::ClientContext* context, const ::grpcTest::request* request, ::grpcTest::respond* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::grpcTest::request, ::grpcTest::respond, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_getData_, context, request, response, std::move(f));
 }
 
-void GrpcTestService::Stub::async::receiveData(::grpc::ClientContext* context, const ::grpcTest::pkg* request, ::grpcTest::pkg1* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_receiveData_, context, request, response, reactor);
+void GrpcTestService::Stub::async::getData(::grpc::ClientContext* context, const ::grpcTest::request* request, ::grpcTest::respond* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_getData_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::grpcTest::pkg1>* GrpcTestService::Stub::PrepareAsyncreceiveDataRaw(::grpc::ClientContext* context, const ::grpcTest::pkg& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::grpcTest::pkg1, ::grpcTest::pkg, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_receiveData_, context, request);
+::grpc::ClientAsyncResponseReader< ::grpcTest::respond>* GrpcTestService::Stub::PrepareAsyncgetDataRaw(::grpc::ClientContext* context, const ::grpcTest::request& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::grpcTest::respond, ::grpcTest::request, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_getData_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::grpcTest::pkg1>* GrpcTestService::Stub::AsyncreceiveDataRaw(::grpc::ClientContext* context, const ::grpcTest::pkg& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::grpcTest::respond>* GrpcTestService::Stub::AsyncgetDataRaw(::grpc::ClientContext* context, const ::grpcTest::request& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncreceiveDataRaw(context, request, cq);
+    this->PrepareAsyncgetDataRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -62,19 +62,19 @@ GrpcTestService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcTestService_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< GrpcTestService::Service, ::grpcTest::pkg, ::grpcTest::pkg1, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< GrpcTestService::Service, ::grpcTest::request, ::grpcTest::respond, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcTestService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::grpcTest::pkg* req,
-             ::grpcTest::pkg1* resp) {
-               return service->receiveData(ctx, req, resp);
+             const ::grpcTest::request* req,
+             ::grpcTest::respond* resp) {
+               return service->getData(ctx, req, resp);
              }, this)));
 }
 
 GrpcTestService::Service::~Service() {
 }
 
-::grpc::Status GrpcTestService::Service::receiveData(::grpc::ServerContext* context, const ::grpcTest::pkg* request, ::grpcTest::pkg1* response) {
+::grpc::Status GrpcTestService::Service::getData(::grpc::ServerContext* context, const ::grpcTest::request* request, ::grpcTest::respond* response) {
   (void) context;
   (void) request;
   (void) response;

@@ -29,16 +29,14 @@ find_package(Qt5 COMPONENTS Core Widgets Network REQUIRED)
 
 
 
-#====== Adding project files
-
-
+#====== Adding project files and executable
 file(GLOB ${ProjectId}_SRC
-     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
-     "${CMAKE_CURRENT_SOURCE_DIR}/src/**/*.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/**/*.cpp"
 )
 file(GLOB ${ProjectId}_HDR
      "${CMAKE_CURRENT_SOURCE_DIR}/*.h"
-     "${CMAKE_CURRENT_SOURCE_DIR}/**/*.h"
+     "${CMAKE_CURRENT_SOURCE_DIR}/include/**/*.h"
 )
 
 file(GLOB ${ProjectId}_RES
@@ -46,20 +44,21 @@ file(GLOB ${ProjectId}_RES
 )
 
 
+include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/${ProjectId}
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${PROTOBUF_MODELS_INCLUDES_PATH}
+    ${CMAKE_CURRENT_BINARY_DIR}
+    )
+
+
 add_executable(${ProjectId}
                ${${ProjectId}_SRC}
                ${${ProjectId}_HDR}
                ${${ProjectId}_RES}
-              ${PROTOBUF_MODELS_INCLUDES}
+               ${PROTOBUF_MODELS_INCLUDES}
                )
 
-include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_BINARY_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/src
-    ${CMAKE_CURRENT_SOURCE_DIR}/../Models
-    ${CMAKE_CURRENT_SOURCE_DIR}/data
-    )
 
 
 target_link_libraries(${ProjectId} PUBLIC
@@ -69,8 +68,14 @@ target_link_libraries(${ProjectId} PUBLIC
                       ${_REFLECTION}
                       ${_GRPC_GRPCPP}
                       ${_PROTOBUF_LIBPROTOBUF}
-
                       )
+
+
+
+
+
+
+
 
 
 

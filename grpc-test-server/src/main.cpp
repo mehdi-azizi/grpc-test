@@ -7,7 +7,7 @@ int  main(int argc, char *argv[])
   std::cout << "Starting server ..." << std::endl;
   GrpcTestServer  x;
 
-  x.start("127.0.0.1", 2424);
+  x.start("0.0.0.0", 2424);
 
   return a.exec();
 }

@@ -29,9 +29,7 @@ find_package(Qt5 COMPONENTS Core Widgets Network REQUIRED)
 
 
 
-#====== Adding project files
-
-
+#====== Adding project files and executable
 file(GLOB ${ProjectId}_SRC
      "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp"
      "${CMAKE_CURRENT_SOURCE_DIR}/**/*.cpp"

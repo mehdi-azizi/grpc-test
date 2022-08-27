@@ -25,13 +25,15 @@ public:
   void  stop();
 
 private:
-  std::unique_ptr<grpc::Server>                    _server;
-  std::unique_ptr<grpc::ServerCompletionQueue>     _queue;
-  grpcTest::GrpcTestService::AsyncService         *_service;
-  grpc::ServerContext                              _context;
-  grpcTest::pkg                                    _requestPkg;
-  grpcTest::pkg1                                   _respondPkg;
-  grpc::ServerAsyncResponseWriter<grpcTest::pkg1>  _responder;
+  std::unique_ptr<grpc::Server>                       _server;
+  std::unique_ptr<grpc::ServerCompletionQueue>        _queue;
+  grpcTest::GrpcTestService::AsyncService            *_service;
+  grpc::ServerContext                                 _context;
+  grpcTest::request                                   _requestPkg;
+  grpcTest::respond                                   _respondPkg;
+  grpc::ServerAsyncResponseWriter<grpcTest::respond>  _responder;
+
+  void  readData();
 };
 
 #endif // GRPCTESTSERVER_H
