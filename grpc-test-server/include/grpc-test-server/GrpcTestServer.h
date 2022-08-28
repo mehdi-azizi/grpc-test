@@ -1,17 +1,21 @@
 #ifndef GRPCTESTSERVER_H
 #define GRPCTESTSERVER_H
 
-#include <string>
-#include <iostream>
-#include <memory>
-#include <string>
-
-#include <grpcpp/ext/proto_server_reflection_plugin.h>
-#include <grpcpp/grpcpp.h>
-#include <grpcpp/health_check_service_interface.h>
-
 #include "sample.pb.h"
 #include "sample.grpc.pb.h"
+
+#include <string>
+#include <iostream>
+#include <qthread.h>
+#include <grpcpp/grpcpp.h>
+using AsyncService   = grpcTest::GrpcTestService::AsyncService;
+using ServerQueuePtr = std::shared_ptr<grpc::ServerCompletionQueue>;
+using GrpcServerPtr  = std::unique_ptr<grpc::Server>;
+using ThreadPtr      = std::unique_ptr<QThread>;
+namespace GrpcTest
+{
+class Worker;
+using WorkerPtr = std::unique_ptr<Worker>;
 
 class GrpcTestServer final
 {
@@ -20,20 +24,26 @@ public:
 
   ~GrpcTestServer();
 
-  void  start(const std::string &, int);
+  bool  start();
+
+  bool  start(const std::string &, int);
+
+  void  restart();
 
   void  stop();
 
+  std::string  getListenAddress() const;
+
+  void  changeListenAddress(const std::string &listenAddress);
+
 private:
-  std::unique_ptr<grpc::Server>                       _server;
-  std::unique_ptr<grpc::ServerCompletionQueue>        _queue;
-  grpcTest::GrpcTestService::AsyncService            *_service;
-  grpc::ServerContext                                 _context;
-  grpcTest::request                                   _requestPkg;
-  grpcTest::respond                                   _respondPkg;
-  grpc::ServerAsyncResponseWriter<grpcTest::respond>  _responder;
-
-  void  readData();
+  bool            _running;
+  std::string     _listenAddress;
+  GrpcServerPtr   _server;
+  AsyncService   *_service;
+  ServerQueuePtr  _queue;
+  WorkerPtr       _worker;
+  ThreadPtr       _thread;
 };
-
+}
 #endif // GRPCTESTSERVER_H

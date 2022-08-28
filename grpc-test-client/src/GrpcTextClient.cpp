@@ -13,12 +13,13 @@ void  GrpcTextClient::init(const std::string &ip, int port)
   std::cout << "Starting client initilizing ..." << std::endl;
 }
 
-std::string  GrpcTextClient::sendData()
+std::string  GrpcTextClient::sendData(const std::string msg)
 {
-  auto     stub = GrpcTestService::NewStub(_channel);
-  request  _request;
+  auto           stub = GrpcTestService::NewStub(_channel);
+  request        _request;
+  ClientContext  _context;
 
-  _request.set_name("test");
+  _request.set_name(msg);
   auto  rpc = stub->PrepareAsyncgetData(&_context, _request, &_queue);
 
   rpc->StartCall();
@@ -42,7 +43,7 @@ std::string  GrpcTextClient::sendData()
   // Act upon the status of the actual RPC.
   if (_status.ok())
   {
-    return ">>>>>>>>>>>>>>>>>>>>" + _respond.message();
+    return _respond.message();
   }
   else
   {

@@ -19,11 +19,10 @@ public:
 
   void  init(const std::string &ip, int port);
 
-  std::string  sendData();
+  std::string  sendData(const std::string msg);
 
 private:
   std::shared_ptr<Channel>  _channel;
-  ClientContext             _context;
   CompletionQueue           _queue;
   Status                    _status;
   grpcTest::respond         _respond;

@@ -5,9 +5,12 @@ int  main(int argc, char *argv[])
 {
   QCoreApplication  a(argc, argv);
   std::cout << "Starting server ..." << std::endl;
-  GrpcTestServer  x;
+  GrpcTest::GrpcTestServer  x;
 
-  x.start("0.0.0.0", 2424);
+  if (x.start("0.0.0.0", 2424))
+  {
+    return a.exec();
+  }
 
-  return a.exec();
+  return 1;
 }
